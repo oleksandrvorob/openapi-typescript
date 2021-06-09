@@ -1,0 +1,81 @@
+{
+  "name": "openapi-typescript",
+  "description": "Generate TypeScript types from Swagger OpenAPI specs",
+  "version": "4.0.0",
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "author": "drew@pow.rs",
+  "license": "ISC",
+  "bin": {
+    "openapi-typescript": "bin/cli.js"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    "browser": "./dist/esm/index.js",
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "src",
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drwpow/openapi-typescript"
+  },
+  "keywords": [
+    "swagger",
+    "typescript",
+    "ts",
+    "dts",
+    "openapi",
+    "codegen",
+    "generation",
+    "openapi 3",
+    "node"
+  ],
+  "bugs": {
+    "url": "https://github.com/drwpow/openapi-typescript/issues"
+  },
+  "homepage": "https://github.com/drwpow/openapi-typescript#readme",
+  "scripts": {
+    "build": "rm -rf dist && tsc --build tsconfig.json && tsc --build tsconfig.cjs.json",
+    "format": "yarn prettier -w .",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts src",
+    "prepare": "npm run build",
+    "pregenerate": "npm run build",
+    "test": "npm run build && jest --no-cache --test-timeout=10000",
+    "test:coverage": "npm run build && jest --no-cache --test-timeout=10000 --coverage && codecov",
+    "typecheck": "tsc --noEmit",
+    "version": "npm run build"
+  },
+  "dependencies": {
+    "hosted-git-info": "^3.0.8",
+    "js-yaml": "^4.1.0",
+    "kleur": "^4.1.4",
+    "meow": "^9.0.0",
+    "mime": "^2.5.2",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.3.0",
+    "tiny-glob": "^0.2.9"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/js-yaml": "^4.0.1",
+    "@types/mime": "^2.0.3",
+    "@types/node-fetch": "^2.5.10",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "codecov": "^3.8.2",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.3",
+    "ts-jest": "^27.0.2",
+    "typescript": "^4.2.4"
+  }
+}
